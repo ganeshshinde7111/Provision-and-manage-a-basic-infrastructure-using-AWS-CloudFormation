@@ -1,0 +1,2 @@
+# Provision-and-manage-a-basic-infrastructure-using-AWS-CloudFormation
+This repository contains an AWS CloudFormation template and associated resources for creating a simple development environment. The project focuses on modifying an AWS CloudFormation template to set up an Apache web server with HTTP access, hosted in a dedicated VPC with a single public subnet and a small Amazon EC2 instance. The project involves:
