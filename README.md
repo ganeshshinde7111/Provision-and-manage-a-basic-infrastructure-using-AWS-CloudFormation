@@ -6,6 +6,7 @@ This repository contains an AWS CloudFormation template and associated resources
 3. Detecting drift in the stack after manual modifications.
 4. Updating the stack using CloudFormation's change set functionality.
 
+
 ## Objectives
  - Build AWS CloudFormation templates in YAML to define infrastructure resources.
  - Create a CloudFormation stack to provision infrastructure and review the outputs.
