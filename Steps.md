@@ -8,4 +8,5 @@ In this step, we connect to the AWS Cloud9 integrated development environment (I
 
 **1.2: Verify that the AWS CLI is installed in the Cloud9 Environment.**
 - To verify the AWS CLI is installed and to display its version, run the following command in a terminal window:
-        aws --version
+
+        #aws --version
