@@ -33,7 +33,8 @@ For this step, we use YAML to code the CloudFormation templates.
 - Create file name lab1.yaml under templates folder using AWS Cloud9.
 - Copy below code and paste in lab1.yaml file.
   
-```AWSTemplateFormatVersion: 2010-09-09
+```
+AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   AWS CloudFormation Simple Infrastructure Template
   VPC_Single_Instance_In_Subnet: This template will show how to create a VPC and
