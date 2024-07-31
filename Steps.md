@@ -383,5 +383,8 @@ Outputs:
   AppURL:
     Description: Newly created application URL
     Value: !Sub 'http://${WebServerInstance.PublicIp}'
-# STEP 2.3 - END```
+# STEP 2.3 - END
+```
 
+**2.1: Add a parameter to the template**
+- In this step, we update a Parameter in the lab1.yaml template in the Cloud9 environment.
