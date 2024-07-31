@@ -19,4 +19,15 @@ In this step, we connect to the AWS Cloud9 integrated development environment (I
 
 
 **1.3: Explore the basics of a CloudFormation Template**
-- 
+- For basics of CloudFormation Template, we refer to the AWS CloudFormation documentation template-anatomy. https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy
+
+
+## Step 2: Create an AWS CloudFormation template.
+In this step, we use AWS Cloud9 to create an AWS CloudFormation template, and use that template to create a CloudFormation stack.
+
+AWS CloudFormation provides a common language to model and provision resources in your cloud environment. You code your infrastructure with the CloudFormation template language, in either YAML or JSON format. Both YAML and JSON are data serialization languages but with different features. AWS CloudFormation only processes JSON; templates formatted as YAML are converted to JSON when the stack create is initiated.
+
+For this step, we use YAML to code the CloudFormation templates.
+
+**2.1: Add a parameter to the template**
+
