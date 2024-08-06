@@ -409,7 +409,9 @@ Outputs:
 ```
 
 **2.3: Add an output to the template**
+
 -In this step, we add an Output to the lab1.yaml template in the Cloud9 environment.
+
 -check 2.3 step in lab1.yaml and replace with below output,
 ```
   AppURL:
@@ -417,13 +419,16 @@ Outputs:
     Value: !Sub 'http://${WebServerInstance.PublicIp}'
 ```
 **NOTE:** The intrinsic !Sub function is used in the AppURL output definition above to return a usable URL when stack creation is completed.
+
 -On the File menu, select **Save** to save the template.
 
 ## Step 3: Provision an infrastructure using the stack’s CloudFormation template.
 In this step, we launch the stack creation process from the AWS CLI and review all of the resources created on the CloudFormation console.
 
 **3.1: Run CreateStack using the lab1.yaml template.**
+
 -In this step, we run the create-stack command to initiate a stack creation from the CLI.
+
 -In the AWS Cloud9 terminal, ensure you are in the templates folder by running the following command:
 ```
 cd ~/environment/templates
