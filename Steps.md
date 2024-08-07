@@ -380,7 +380,7 @@ Outputs:
 
 **2.1: Add a parameter to the template**
 - In this step, we update a Parameter in the lab1.yaml template in the Cloud9 environment.
-- check 2.1 step in lab1.yaml and replace with below parameter,
+- Check 2.1 step in lab1.yaml and replace with below parameter,
 ```
   InstanceType:
     Description: WebServer EC2 instance type
@@ -395,7 +395,7 @@ Outputs:
 
 **2.2: Add a resource to the template**
 - In this step, we add a Resource to the lab1.yaml template in the Cloud9 environment.
-- check 2.2 step in lab1.yaml and replace with below resource,
+- Check 2.2 step in lab1.yaml and replace with below resource,
 ```
   Route:
     Type: 'AWS::EC2::Route'
@@ -409,39 +409,34 @@ Outputs:
 ```
 
 **2.3: Add an output to the template**
-
 - In this step, we add an Output to the lab1.yaml template in the Cloud9 environment.
-
 - Check 2.3 step in lab1.yaml and replace with below output,
 ```
   AppURL:
     Description: Newly created application URL
     Value: !Sub 'http://${WebServerInstance.PublicIp}'
 ```
-**NOTE:** The intrinsic !Sub function is used in the AppURL output definition above to return a usable URL when stack creation is completed.
+**NOTE: The intrinsic !Sub function is used in the AppURL output definition above to return a usable URL when stack creation is completed.**
 
 - On the File menu, select **Save** to save the template.
+
 
 ## Step 3: Provision an infrastructure using the stack’s CloudFormation template.
 In this step, we launch the stack creation process from the AWS CLI and review all of the resources created on the CloudFormation console.
 
 **3.1: Run CreateStack using the lab1.yaml template.**
-
 - In this step, we run the create-stack command to initiate a stack creation from the CLI.
-
 - In the AWS Cloud9 terminal, ensure you are in the templates folder by running the following command:
 ```
 cd ~/environment/templates
 ```
-
 - From the terminal, run the following command to launch the stack creation process using inline parameters to match the template definition.
 ```
 aws cloudformation create-stack --stack-name Lab1 --parameters ParameterKey=InstanceType,ParameterValue=t2.micro --template-body file://lab1.yaml
 ```
-
 - The create-stack command calls the specified AWS CloudFormation template and initiates a stack creation. The parameter InstanceType tells CloudFormation what size Amazon EC2 instance to deploy.
-
 - Successfully running create-stack returns a StackId at the command line.
+
 
 **If your stack creation fails, refer to the troubleshooting steps:**
 If your stack creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the stack creation failure. Use that information to correct the template. When we have corrected the issue use the following command to delete the failed stack.
@@ -459,30 +454,24 @@ In this step, we query the status of the stack creation process by running the d
 ```
 aws cloudformation describe-stacks --stack-name Lab1
 ```
-**NOTE:** The describe-stacks command returns a large amount of information to the terminal. It presents information on every resource defined by our template, the current status in the build process, and specific attributes of the resource that are available at the time that we run describe-stacks. The AWS CloudFormation dashboard presents the same information, but in a friendlier format.
+
+**NOTE: The describe-stacks command returns a large amount of information to the terminal. It presents information on every resource defined by our template, the current status in the build process, and specific attributes of the resource that are available at the time that we run describe-stacks. The AWS CloudFormation dashboard presents the same information, but in a friendlier format.**
 
 - It takes CloudFormation a few minutes to complete the create-stack process.
-
 - To query the status of the stack creation process, from the terminal, run the following command:
 ```
 aws cloudformation describe-stacks --stack-name Lab1 --query "Stacks[0].StackStatus"
 ```
-
 - Return to the Environments browser tab to view the status in the console.
-
 - At the top of the AWS Management Console, in the search bar, search for and choose CloudFormation.
-
 - In the list of stacks, locate Lab1. Note the status of your Create Stack job.
 
 **3.3: Review the stack resources created**
 In this step, we review the Lab1 stack and exploring the Stack Info, Events, Resources and Outputs generated from the stack creation in the console.
 
 - In the CloudFormation console explore the stack events.
-
 - Select the stack and explore the information available on each tab: Stack Info, Events, Resources and Outputs.
-
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
-
 - The following resources should be created:
 *AttachGateway*
 *IPAddress*
@@ -504,11 +493,9 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 *WebServerInstance*
 
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
-
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
-
 - A webpage displaying a time-out error is expected to appear with the following message: **This site can’t be reached.**
 
-**NOTE:** The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.
+**NOTE: The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.**
 
 You have successfully provisioned a simple infrastructure using a CloudFormation template and identified a limitation in the Security Group resource.
