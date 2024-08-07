@@ -593,3 +593,64 @@ In this step, we modify the Security Group resource to the expected value in the
 **5.1: Modify the Security Group Rules**
 Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFormation template. In this step, a change is made in the template for the stack to implement the modification when creating.
 
+- In the AWS Cloud9 Environment pane, open the context menu for lab1.yaml file you edited earlier and choose Duplicate.
+- Rename the duplicate file lab1-CS.yaml, and open the file in the AWS Cloud9 editor.
+  Modify the InstanceSecurityGroup resource to allow access to the AppURL:
+- Under the SecurityGroupIngress property value, note the CidrIP listed as 1.1.1.1/32
+- In order to make the webpage accessible, change the CidrIP value to 0.0.0.0/0
+- Save the file.
+
+
+**5.2: Create the change set**
+In this step, we run the create-change-set command to create a change set for the lab1.yaml template.
+
+- In the AWS Cloud9 terminal, ensure you are in the templates folder by running the following command:
+```
+cd ~/environment/templates
+```
+- From the terminal, run the following command to launch the stack change set process:
+```
+aws cloudformation create-change-set --stack-name Lab1 --change-set-name Lab1ChangeSet --parameters ParameterKey=InstanceType,ParameterValue=t2.micro --template-body file://lab1-CS.yaml
+```
+- After the change set is processed, AWS CloudFormation returns a StackId and Id. To see the changes that you have staged, return to the CloudFormation browser tab.
+
+**If your change set creation fails, refer to the troubleshooting steps:**
+If change set creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the failure. Use that information to correct template and deploy the change set again.
+
+When we have corrected the issue use the following command to delete your change set:
+```
+aws cloudformation delete-change-set --change-set-name Lab1ChangeSet --stack-name Lab1
+```
+Return to the AWS CloudFormation dashboard to observe change set deletion. When the delete-change-set has completed re-run the execute-change-set command.
+
+- To create the change set, return back to Step 5.2
+
+
+**5.3: Review the changes**
+In this step, we review the details of the change set in the console.
+
+- Choose Lab1 from the top of the drift results window to return to stack.
+- On the Change sets tab, select Lab1ChangeSet. Review the details of the change-set in the Changes tab.
+
+
+**5.4: Run the change set**
+In this step, we run the change set created using the console.
+
+- In the Lab1ChangeSet window, verify the changes are as expected for the InstanceSecurityGroup resource.
+- At the top-right of the page, choose **Execute change set**.
+- A pop-up window prompts you to choose how to handle resources in the event of a stack failure.
+- With the default Roll back all stack resources chosen, select **Execute change set**.
+- Wait for the stack update to complete and the Status to change to **UPDATE_COMPLETE**.
+  Lab1ChangeSet is no longer available, and there is a new entry under Last executed change set.
+- Select the Change set id and review the information.
+  * Status as **CREATE_COMPLETE**
+  * Execution Status as **EXECUTE_COMPLETE**
+
+
+**5.5: Verify the AppURL is working**
+In this step, we access the AppURL link to ensure the security group change made is successfully implemented.
+
+- Return to the Environments browser tab, return to the Lab1 stack console view.
+- On the Outputs tab, launch the URL shown in a new browser tab.
+- When loaded, a webpage is displayed with the following message: **“Congratulations, you have successfully deployed a simple infrastructure using AWS CloudFormation”.**
+
