@@ -392,6 +392,8 @@ Outputs:
       - t2.small
     ConstraintDescription: must be a valid EC2 instance type.
 ```
+![image](https://github.com/user-attachments/assets/a65ba04e-a303-4164-b4ea-badb2a7340d9)
+
 
 **2.2: Add a resource to the template**
 - In this step, we add a Resource to the lab1.yaml template in the Cloud9 environment.
@@ -407,6 +409,8 @@ Outputs:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
 ```
+![image](https://github.com/user-attachments/assets/a28ee6f1-53c6-4bc9-ad9e-54a4d1775b91)
+
 
 **2.3: Add an output to the template**
 - In this step, we add an Output to the lab1.yaml template in the Cloud9 environment.
@@ -416,6 +420,8 @@ Outputs:
     Description: Newly created application URL
     Value: !Sub 'http://${WebServerInstance.PublicIp}'
 ```
+![image](https://github.com/user-attachments/assets/62fd4857-196f-47b2-b760-a50a8d3a4dd7)
+
 
 **NOTE: The intrinsic !Sub function is used in the AppURL output definition above to return a usable URL when stack creation is completed.**
 
