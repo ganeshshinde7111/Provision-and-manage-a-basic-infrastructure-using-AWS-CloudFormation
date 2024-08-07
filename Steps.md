@@ -531,6 +531,7 @@ In this task, we use AWS CloudFormation to detect changes that CloudFormation di
 Users can change resources outside of AWS CloudFormation. Drift detection can be used to identify stack resources that have been modified outside of AWS CloudFormation management.
 
 **4.1: Modify environment to detect drift**
+
 In this step, we modify the security group rules in the EC2 console.
 
 - Open EC2 console.
@@ -541,6 +542,7 @@ In this step, we modify the security group rules in the EC2 console.
 
 
 **4.2: Verify Security Group settings have changed**
+
 In this step, we verify the changes made to the security group have allowed we to access the previously unreachable webpage.
 
 - Return to the AWS Management Console, use the AWS search bar to search for CloudFormation and then choose the service from the list of results.
@@ -552,6 +554,7 @@ In this step, we verify the changes made to the security group have allowed we t
 
 
 **4.3: Generate a drift report**
+
 In this step, we identify and detect the drift in the template via the AWS Management console.
 
 - Return to the CloudFormation > Stacks > Lab 1 browser tab.
@@ -567,10 +570,10 @@ Drift detection allows us to detect whether a stack’s actual configuration dif
 
 
 **4.4: View drift detection results via the CLI**
+
 In this step, we identify and detect the drift in the template via the Cloud9 CLI.
 
 - Return to the AWS Cloud9 terminal to review the details of the stack drift detection operation using AWS CLI.
-
 - In the AWS Cloud9 terminal, enter the AWS CLI CloudFormation describe-stack-resource-drifts command with the following parameters:
   –stack-name [Paste the stack name here]
   –stack-resource-drift-status-filters MODIFIED DELETED
@@ -580,8 +583,6 @@ aws cloudformation describe-stack-resource-drifts --stack-name Lab1 --stack-reso
 ```
 
 - In the results, look for the Resource Type SecurityGroup and then look for the PropertyDifferences. The results should mirror the drift information that was displayed on the AWS CloudFormation dashboard.
-
-
 - We have successfully detected a drift in the CloudFormation template.
 
 
@@ -591,6 +592,7 @@ In the previous step, we manually changed a resource value. The best practice to
 In this step, we modify the Security Group resource to the expected value in the template. we edit the lab1 template modifying the SecurityGroupRules, review those changes as part of the Change Set, and then implement the changes to the environment.
 
 **5.1: Modify the Security Group Rules**
+
 Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFormation template. In this step, a change is made in the template for the stack to implement the modification when creating.
 
 - In the AWS Cloud9 Environment pane, open the context menu for lab1.yaml file you edited earlier and choose Duplicate.
@@ -602,6 +604,7 @@ Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFo
 
 
 **5.2: Create the change set**
+
 In this step, we run the create-change-set command to create a change set for the lab1.yaml template.
 
 - In the AWS Cloud9 terminal, ensure you are in the templates folder by running the following command:
@@ -615,6 +618,7 @@ aws cloudformation create-change-set --stack-name Lab1 --change-set-name Lab1Cha
 - After the change set is processed, AWS CloudFormation returns a StackId and Id. To see the changes that you have staged, return to the CloudFormation browser tab.
 
 **If your change set creation fails, refer to the troubleshooting steps:**
+
 If change set creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the failure. Use that information to correct template and deploy the change set again.
 
 When we have corrected the issue use the following command to delete your change set:
@@ -627,6 +631,7 @@ Return to the AWS CloudFormation dashboard to observe change set deletion. When 
 
 
 **5.3: Review the changes**
+
 In this step, we review the details of the change set in the console.
 
 - Choose Lab1 from the top of the drift results window to return to stack.
@@ -634,6 +639,7 @@ In this step, we review the details of the change set in the console.
 
 
 **5.4: Run the change set**
+
 In this step, we run the change set created using the console.
 
 - In the Lab1ChangeSet window, verify the changes are as expected for the InstanceSecurityGroup resource.
@@ -648,6 +654,7 @@ In this step, we run the change set created using the console.
 
 
 **5.5: Verify the AppURL is working**
+
 In this step, we access the AppURL link to ensure the security group change made is successfully implemented.
 
 - Return to the Environments browser tab, return to the Lab1 stack console view.
