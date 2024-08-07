@@ -451,6 +451,7 @@ aws cloudformation delete-stack --stack-name Lab1
 
 
 **3.2: Verify the status of the stack.**
+
 In this step, we query the status of the stack creation process by running the describe-stack command in the CLI and viewing the process in the console.
 
 - From the terminal, run the following command:
