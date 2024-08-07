@@ -416,6 +416,7 @@ Outputs:
     Description: Newly created application URL
     Value: !Sub 'http://${WebServerInstance.PublicIp}'
 ```
+
 **NOTE: The intrinsic !Sub function is used in the AppURL output definition above to return a usable URL when stack creation is completed.**
 
 - On the File menu, select **Save** to save the template.
@@ -436,10 +437,10 @@ aws cloudformation create-stack --stack-name Lab1 --parameters ParameterKey=Inst
 ```
 - The create-stack command calls the specified AWS CloudFormation template and initiates a stack creation. The parameter InstanceType tells CloudFormation what size Amazon EC2 instance to deploy.
 - Successfully running create-stack returns a StackId at the command line.
-
-
+.
+.
 **If your stack creation fails, refer to the troubleshooting steps:**
-If your stack creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the stack creation failure. Use that information to correct the template. When we have corrected the issue use the following command to delete the failed stack.
+  If your stack creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the stack creation failure. Use that information to correct the template. When we have corrected the issue use the following command to delete the failed stack.
 
 - Return to the AWS Cloud9 terminal and run the following command:
 ```
@@ -454,8 +455,9 @@ In this step, we query the status of the stack creation process by running the d
 ```
 aws cloudformation describe-stacks --stack-name Lab1
 ```
-
+.
 **NOTE: The describe-stacks command returns a large amount of information to the terminal. It presents information on every resource defined by our template, the current status in the build process, and specific attributes of the resource that are available at the time that we run describe-stacks. The AWS CloudFormation dashboard presents the same information, but in a friendlier format.**
+.
 
 - It takes CloudFormation a few minutes to complete the create-stack process.
 - To query the status of the stack creation process, from the terminal, run the following command:
@@ -474,28 +476,45 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
 - The following resources should be created:
 *AttachGateway*
+
 *IPAddress*
+
 *InboundHTTPNetworkAclEntry*
+
 *InboundNetworkAclEntry*
+
 *InboundResponsePortsNetworkAclEntry*
+
 *InstanceSecurityGroup*
+
 *InternetGateway*
+
 *NetworkAcl*
+
 *OutBoundHTTPNetworkAclEntry*
+
 *OutBoundHTTPSNetworkAclEntry*
+
 *OutBoundResponsePortsNetworkAclEntry*
+
 *Route*
+
 *RouteTable*
+
 *Subnet*
+
 *SubnetNetworkAclAssociation*
+
 *SubnetRouteTableAssociation*
+
 *VPC*
+
 *WebServerInstance*
 
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
 - A webpage displaying a time-out error is expected to appear with the following message: **This site can’t be reached.**
-
+.
 **NOTE: The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.**
-
+.
 You have successfully provisioned a simple infrastructure using a CloudFormation template and identified a limitation in the Security Group resource.
