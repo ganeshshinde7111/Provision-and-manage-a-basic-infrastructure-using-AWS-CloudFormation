@@ -523,3 +523,73 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 **NOTE: The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.**
 
 You have successfully provisioned a simple infrastructure using a CloudFormation template and identified a limitation in the Security Group resource.
+
+
+## Step 4: Detect drift in a CloudFormation stack
+In this task, we use AWS CloudFormation to detect changes that CloudFormation didn’t make. Make a change to your environment, instruct CloudFormation to detect any drift and then view the results.
+
+Users can change resources outside of AWS CloudFormation. Drift detection can be used to identify stack resources that have been modified outside of AWS CloudFormation management.
+
+**4.1: Modify environment to detect drift**
+In this step, we modify the security group rules in the EC2 console.
+
+- Open EC2 console.
+- On the EC2 console, in the navigation pane, choose Security Groups and select the security group for your simple infrastructure.
+- On the Inbound rules tab choose Edit inbound rules .
+- On the Edit inbound rules page, on the listed Security group rule ID modify the Source type parameter by selecting Anywhere-IPv4 from the drop-down menu.
+- Choose Save rules .
+
+
+**4.2: Verify Security Group settings have changed**
+In this step, we verify the changes made to the security group have allowed we to access the previously unreachable webpage.
+
+- Return to the AWS Management Console, use the AWS search bar to search for CloudFormation and then choose the service from the list of results.
+- Locate the Lab1 stack in the console view.
+- On the Outputs tab, launch the URL shown in a new browser tab.
+- When loaded, a webpage is displayed with the following message: Congratulations, you have successfully deployed a simple infrastructure using AWS CloudFormation.
+
+**NOTE: Notice that changing the source IP address on the Security Group allowed traffic into the webpage URL. Modifying template resources via the console is a quick-fix but not a best practice.**
+
+
+**4.3: Generate a drift report**
+In this step, we identify and detect the drift in the template via the AWS Management console.
+
+- Return to the CloudFormation > Stacks > Lab 1 browser tab.
+- In the stack details pane, choose the Stack actions drop-down menu and then choose **Detect drift** .
+
+ **NOTE: Wait until AWS CloudFormation completes the drift detection operation. Refresh the page to view the changes.**
+
+- With stack selected, from the Stack actions drop-down menu, select **View drift results**.
+- In the Resource drift status section, select the InstanceSecurityGroup resource that has the status of **MODIFIED**.
+- Select **View drift details** to learn more about what resources that changed.
+
+Drift detection allows us to detect whether a stack’s actual configuration differs from its expected configuration. A resource is considered to have drifted if any of its actual property values differ from the expected property values. This includes if the property or resource has been deleted. In this lab we manually changed a resource value. The most direct manner to address this drift is to manually modify the resource back to the expected value. If the change is due to the deployment of another stack, rollback the changes of the other stack. A last resort and the most destructive is to delete stack and redeploy it.
+
+
+**4.4: View drift detection results via the CLI**
+In this step, we identify and detect the drift in the template via the Cloud9 CLI.
+
+- Return to the AWS Cloud9 terminal to review the details of the stack drift detection operation using AWS CLI.
+
+- In the AWS Cloud9 terminal, enter the AWS CLI CloudFormation describe-stack-resource-drifts command with the following parameters:
+  –stack-name [Paste the stack name here]
+  –stack-resource-drift-status-filters MODIFIED DELETED
+
+```
+aws cloudformation describe-stack-resource-drifts --stack-name Lab1 --stack-resource-drift-status-filters MODIFIED DELETED
+```
+
+- In the results, look for the Resource Type SecurityGroup and then look for the PropertyDifferences. The results should mirror the drift information that was displayed on the AWS CloudFormation dashboard.
+
+
+- We have successfully detected a drift in the CloudFormation template.
+
+
+## Step 5: Update the stack using a change set
+In the previous step, we manually changed a resource value. The best practice to change the environment is through the template updates. Template updates can be easily done using a changeset.
+
+In this step, we modify the Security Group resource to the expected value in the template. we edit the lab1 template modifying the SecurityGroupRules, review those changes as part of the Change Set, and then implement the changes to the environment.
+
+**5.1: Modify the Security Group Rules**
+Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFormation template. In this step, a change is made in the template for the stack to implement the modification when creating.
+
