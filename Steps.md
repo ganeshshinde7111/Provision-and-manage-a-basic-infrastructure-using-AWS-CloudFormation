@@ -480,41 +480,24 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
 - The following resources should be created:
   
-  *AttachGateway*
-
-  *IPAddress*
-
-  *InboundHTTPNetworkAclEntry*
-
-  *InboundNetworkAclEntry*
-
-  *InboundResponsePortsNetworkAclEntry*
-
-  *InstanceSecurityGroup*
-
-  *InternetGateway*
-
-  *NetworkAcl*
-
-  *OutBoundHTTPNetworkAclEntry*
-
-  *OutBoundHTTPSNetworkAclEntry*
-
-  *OutBoundResponsePortsNetworkAclEntry*
-
-  *Route*
-
-  *RouteTable*
-
-  *Subnet*
-
-  *SubnetNetworkAclAssociation*
-
-  *SubnetRouteTableAssociation*
-
-  *VPC*
-
-  *WebServerInstance*
+  * AttachGateway
+  * IPAddress
+  * InboundHTTPNetworkAclEntry
+  * InboundNetworkAclEntry
+  * InboundResponsePortsNetworkAclEntry
+  * InstanceSecurityGroup
+  * InternetGateway
+  * NetworkAcl
+  * OutBoundHTTPNetworkAclEntry
+  * OutBoundHTTPSNetworkAclEntry
+  * OutBoundResponsePortsNetworkAclEntry
+  * Route
+  * RouteTable
+  * Subnet
+  * SubnetNetworkAclAssociation
+  * SubnetRouteTableAssociation
+  * VPC
+  * WebServerInstance
 
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
