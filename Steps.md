@@ -437,16 +437,18 @@ aws cloudformation create-stack --stack-name Lab1 --parameters ParameterKey=Inst
 ```
 - The create-stack command calls the specified AWS CloudFormation template and initiates a stack creation. The parameter InstanceType tells CloudFormation what size Amazon EC2 instance to deploy.
 - Successfully running create-stack returns a StackId at the command line.
-.
-.
+
+
 **If your stack creation fails, refer to the troubleshooting steps:**
-  If your stack creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the stack creation failure. Use that information to correct the template. When we have corrected the issue use the following command to delete the failed stack.
+
+If your stack creation fails, the AWS CloudFormation console provides detailed information that we can use to identify the cause of the stack creation failure. Use that information to correct the template. When we have corrected the issue use the following command to delete the failed stack.
 
 - Return to the AWS Cloud9 terminal and run the following command:
 ```
 aws cloudformation delete-stack --stack-name Lab1
 ```
 - Return to the AWS CloudFormation dashboard to observe your stack deletion. When the delete-stack has completed return to step 3.1 and re-run the create-stack command.
+
 
 **3.2: Verify the status of the stack.**
 In this step, we query the status of the stack creation process by running the describe-stack command in the CLI and viewing the process in the console.
@@ -468,6 +470,7 @@ aws cloudformation describe-stacks --stack-name Lab1 --query "Stacks[0].StackSta
 - At the top of the AWS Management Console, in the search bar, search for and choose CloudFormation.
 - In the list of stacks, locate Lab1. Note the status of your Create Stack job.
 
+
 **3.3: Review the stack resources created**
 
 In this step, we review the Lab1 stack and exploring the Stack Info, Events, Resources and Outputs generated from the stack creation in the console.
@@ -476,42 +479,43 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 - Select the stack and explore the information available on each tab: Stack Info, Events, Resources and Outputs.
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
 - The following resources should be created:
-```*AttachGateway*
+  
+  *AttachGateway*
 
-*IPAddress*
+  *IPAddress*
 
-*InboundHTTPNetworkAclEntry*
+  *InboundHTTPNetworkAclEntry*
 
-*InboundNetworkAclEntry*
+  *InboundNetworkAclEntry*
 
-*InboundResponsePortsNetworkAclEntry*
+  *InboundResponsePortsNetworkAclEntry*
 
-*InstanceSecurityGroup*
+  *InstanceSecurityGroup*
 
-*InternetGateway*
+  *InternetGateway*
 
-*NetworkAcl*
+  *NetworkAcl*
 
-*OutBoundHTTPNetworkAclEntry*
+  *OutBoundHTTPNetworkAclEntry*
 
-*OutBoundHTTPSNetworkAclEntry*
+  *OutBoundHTTPSNetworkAclEntry*
 
-*OutBoundResponsePortsNetworkAclEntry*
+  *OutBoundResponsePortsNetworkAclEntry*
 
-*Route*
+  *Route*
 
-*RouteTable*
+  *RouteTable*
 
-*Subnet*
+  *Subnet*
 
-*SubnetNetworkAclAssociation*
+  *SubnetNetworkAclAssociation*
 
-*SubnetRouteTableAssociation*
+  *SubnetRouteTableAssociation*
 
-*VPC*
+  *VPC*
 
-*WebServerInstance*
-```
+  *WebServerInstance*
+
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
 - A webpage displaying a time-out error is expected to appear with the following message: **This site can’t be reached.**
