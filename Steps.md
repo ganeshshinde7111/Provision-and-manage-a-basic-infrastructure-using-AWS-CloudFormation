@@ -455,9 +455,9 @@ In this step, we query the status of the stack creation process by running the d
 ```
 aws cloudformation describe-stacks --stack-name Lab1
 ```
-.
+
 **NOTE: The describe-stacks command returns a large amount of information to the terminal. It presents information on every resource defined by our template, the current status in the build process, and specific attributes of the resource that are available at the time that we run describe-stacks. The AWS CloudFormation dashboard presents the same information, but in a friendlier format.**
-.
+
 
 - It takes CloudFormation a few minutes to complete the create-stack process.
 - To query the status of the stack creation process, from the terminal, run the following command:
@@ -469,13 +469,14 @@ aws cloudformation describe-stacks --stack-name Lab1 --query "Stacks[0].StackSta
 - In the list of stacks, locate Lab1. Note the status of your Create Stack job.
 
 **3.3: Review the stack resources created**
+
 In this step, we review the Lab1 stack and exploring the Stack Info, Events, Resources and Outputs generated from the stack creation in the console.
 
 - In the CloudFormation console explore the stack events.
 - Select the stack and explore the information available on each tab: Stack Info, Events, Resources and Outputs.
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
 - The following resources should be created:
-*AttachGateway*
+```*AttachGateway*
 
 *IPAddress*
 
@@ -510,11 +511,11 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 *VPC*
 
 *WebServerInstance*
-
+```
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
 - A webpage displaying a time-out error is expected to appear with the following message: **This site can’t be reached.**
-.
+
 **NOTE: The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.**
-.
+
 You have successfully provisioned a simple infrastructure using a CloudFormation template and identified a limitation in the Security Group resource.
