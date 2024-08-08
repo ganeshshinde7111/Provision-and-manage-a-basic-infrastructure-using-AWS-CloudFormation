@@ -437,10 +437,15 @@ In this step, we launch the stack creation process from the AWS CLI and review a
 ```
 cd ~/environment/templates
 ```
+![image](https://github.com/user-attachments/assets/f01a4572-f283-466f-8e85-d7067f5632c1)
+
+
 - From the terminal, run the following command to launch the stack creation process using inline parameters to match the template definition.
 ```
 aws cloudformation create-stack --stack-name Lab1 --parameters ParameterKey=InstanceType,ParameterValue=t2.micro --template-body file://lab1.yaml
 ```
+![image](https://github.com/user-attachments/assets/31ea2ca0-f0a1-4d40-8f64-dec7f19511d1)
+
 - The create-stack command calls the specified AWS CloudFormation template and initiates a stack creation. The parameter InstanceType tells CloudFormation what size Amazon EC2 instance to deploy.
 - Successfully running create-stack returns a StackId at the command line.
 
@@ -464,6 +469,7 @@ In this step, we query the status of the stack creation process by running the d
 ```
 aws cloudformation describe-stacks --stack-name Lab1
 ```
+![image](https://github.com/user-attachments/assets/55ebf489-36d7-4596-a70b-1074b95f3e47)
 
 **NOTE: The describe-stacks command returns a large amount of information to the terminal. It presents information on every resource defined by our template, the current status in the build process, and specific attributes of the resource that are available at the time that we run describe-stacks. The AWS CloudFormation dashboard presents the same information, but in a friendlier format.**
 
@@ -473,6 +479,8 @@ aws cloudformation describe-stacks --stack-name Lab1
 ```
 aws cloudformation describe-stacks --stack-name Lab1 --query "Stacks[0].StackStatus"
 ```
+![image](https://github.com/user-attachments/assets/081d05da-3cc1-4893-ae2a-8aca164649d7)
+
 - Return to the Environments browser tab to view the status in the console.
 - At the top of the AWS Management Console, in the search bar, search for and choose CloudFormation.
 - In the list of stacks, locate Lab1. Note the status of your Create Stack job.
@@ -481,7 +489,7 @@ aws cloudformation describe-stacks --stack-name Lab1 --query "Stacks[0].StackSta
 **3.3: Review the stack resources created**
 
 In this step, we review the Lab1 stack and exploring the Stack Info, Events, Resources and Outputs generated from the stack creation in the console.
-
+![image](https://github.com/user-attachments/assets/1454654a-910d-4b10-8de2-2d2c76580895)
 - In the CloudFormation console explore the stack events.
 - Select the stack and explore the information available on each tab: Stack Info, Events, Resources and Outputs.
 - On the Resources tab, a list of resources defined in the template are created. Identify some key resources we have created. Each resource has a unique Logical ID, Physical ID, Type, and Status.
@@ -509,6 +517,7 @@ In this step, we review the Lab1 stack and exploring the Stack Info, Events, Res
 - When the status of the Create Stack job shows CREATE_COMPLETE, open the Outputs tab.
 - From the AppURL row, copy and paste the URL shown in the Value column in a new browser tab.
 - A webpage displaying a time-out error is expected to appear with the following message: **This site can’t be reached.**
+![image](https://github.com/user-attachments/assets/6ee9940b-5381-41a9-a7f5-47397c191a11)
 
 **NOTE: The Public IP cannot be accessed at this time due to a Security Group restriction defined in the template. In the next step, this is fixed by modifying the Security Group resource.**
 
@@ -528,6 +537,7 @@ In this step, we modify the security group rules in the EC2 console.
 - On the EC2 console, in the navigation pane, choose Security Groups and select the security group for your simple infrastructure.
 - On the Inbound rules tab choose Edit inbound rules .
 - On the Edit inbound rules page, on the listed Security group rule ID modify the Source type parameter by selecting Anywhere-IPv4 from the drop-down menu.
+![image](https://github.com/user-attachments/assets/48f6cecf-1abc-4069-82df-be77fcbf8ba6)
 - Choose Save rules .
 
 
@@ -539,6 +549,7 @@ In this step, we verify the changes made to the security group have allowed we t
 - Locate the Lab1 stack in the console view.
 - On the Outputs tab, launch the URL shown in a new browser tab.
 - When loaded, a webpage is displayed with the following message: Congratulations, you have successfully deployed a simple infrastructure using AWS CloudFormation.
+![image](https://github.com/user-attachments/assets/f54e4869-5685-41f5-9a34-2fcefe07d90b)
 
 **NOTE: Notice that changing the source IP address on the Security Group allowed traffic into the webpage URL. Modifying template resources via the console is a quick-fix but not a best practice.**
 
@@ -549,10 +560,10 @@ In this step, we identify and detect the drift in the template via the AWS Manag
 
 - Return to the CloudFormation > Stacks > Lab 1 browser tab.
 - In the stack details pane, choose the Stack actions drop-down menu and then choose **Detect drift** .
-
- **NOTE: Wait until AWS CloudFormation completes the drift detection operation. Refresh the page to view the changes.**
+![image](https://github.com/user-attachments/assets/1067f783-3c99-42dd-98a5-59828ee8a6f4)
 
 - With stack selected, from the Stack actions drop-down menu, select **View drift results**.
+
 - In the Resource drift status section, select the InstanceSecurityGroup resource that has the status of **MODIFIED**.
 - Select **View drift details** to learn more about what resources that changed.
 
