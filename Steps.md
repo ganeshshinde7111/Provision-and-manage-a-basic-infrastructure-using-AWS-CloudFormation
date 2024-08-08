@@ -605,9 +605,13 @@ Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFo
 
 - In the AWS Cloud9 Environment pane, open the context menu for lab1.yaml file you edited earlier and choose Duplicate.
 - Rename the duplicate file lab1-CS.yaml, and open the file in the AWS Cloud9 editor.
+![image](https://github.com/user-attachments/assets/56d1f645-04e6-4a71-a5f1-3ff121e9328c)
+
   Modify the InstanceSecurityGroup resource to allow access to the AppURL:
 - Under the SecurityGroupIngress property value, note the CidrIP listed as 1.1.1.1/32
 - In order to make the webpage accessible, change the CidrIP value to 0.0.0.0/0
+![image](https://github.com/user-attachments/assets/d8617233-f189-4d48-9bc8-aad14e05107c)
+
 - Save the file.
 
 
@@ -619,11 +623,16 @@ In this step, we run the create-change-set command to create a change set for th
 ```
 cd ~/environment/templates
 ```
+![image](https://github.com/user-attachments/assets/d8443516-4187-4d3c-9d86-203d7c220c7d)
+
 - From the terminal, run the following command to launch the stack change set process:
 ```
 aws cloudformation create-change-set --stack-name Lab1 --change-set-name Lab1ChangeSet --parameters ParameterKey=InstanceType,ParameterValue=t2.micro --template-body file://lab1-CS.yaml
 ```
+![image](https://github.com/user-attachments/assets/616dfa72-229c-4b96-bf44-257a99aaa233)
+
 - After the change set is processed, AWS CloudFormation returns a StackId and Id. To see the changes that you have staged, return to the CloudFormation browser tab.
+
 
 **If your change set creation fails, refer to the troubleshooting steps:**
 
