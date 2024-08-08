@@ -537,8 +537,6 @@ In this step, we modify the security group rules in the EC2 console.
 - On the EC2 console, in the navigation pane, choose Security Groups and select the security group for your simple infrastructure.
 - On the Inbound rules tab choose Edit inbound rules .
 - On the Edit inbound rules page, on the listed Security group rule ID modify the Source type parameter by selecting Anywhere-IPv4 from the drop-down menu.
-![image](https://github.com/user-attachments/assets/48f6cecf-1abc-4069-82df-be77fcbf8ba6)
-
 - Choose Save rules .
 
 
@@ -653,6 +651,7 @@ In this step, we review the details of the change set in the console.
 
 - Choose Lab1 from the top of the drift results window to return to stack.
 - On the Change sets tab, select Lab1ChangeSet. Review the details of the change-set in the Changes tab.
+![image](https://github.com/user-attachments/assets/d4af1514-364c-441d-917c-1c07c76f68a0)
 
 
 **5.4: Run the change set**
@@ -661,8 +660,12 @@ In this step, we run the change set created using the console.
 
 - In the Lab1ChangeSet window, verify the changes are as expected for the InstanceSecurityGroup resource.
 - At the top-right of the page, choose **Execute change set**.
+![image](https://github.com/user-attachments/assets/dc8f2942-c59b-4883-8601-d3359ae9bb17)
+
 - A pop-up window prompts you to choose how to handle resources in the event of a stack failure.
 - With the default Roll back all stack resources chosen, select **Execute change set**.
+![image](https://github.com/user-attachments/assets/c4984d40-6011-41c9-8b13-c0dbc288550e)
+
 - Wait for the stack update to complete and the Status to change to **UPDATE_COMPLETE**.
   Lab1ChangeSet is no longer available, and there is a new entry under Last executed change set.
 - Select the Change set id and review the information.
@@ -677,4 +680,5 @@ In this step, we access the AppURL link to ensure the security group change made
 - Return to the Environments browser tab, return to the Lab1 stack console view.
 - On the Outputs tab, launch the URL shown in a new browser tab.
 - When loaded, a webpage is displayed with the following message: **“Congratulations, you have successfully deployed a simple infrastructure using AWS CloudFormation”.**
+![image](https://github.com/user-attachments/assets/be3a9a88-c9f4-47ba-8626-25a55708d687)
 
