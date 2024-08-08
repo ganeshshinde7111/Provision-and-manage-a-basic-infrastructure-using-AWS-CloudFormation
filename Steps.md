@@ -561,11 +561,14 @@ In this step, we identify and detect the drift in the template via the AWS Manag
 - In the stack details pane, choose the Stack actions drop-down menu and then choose **Detect drift** .
 ![image](https://github.com/user-attachments/assets/1067f783-3c99-42dd-98a5-59828ee8a6f4)
 
+
 - With stack selected, from the Stack actions drop-down menu, select **View drift results**.
 ![image](https://github.com/user-attachments/assets/d8e77eac-dc10-4cf8-96c7-e948a1428fe5)
 
+
 - In the Resource drift status section, select the InstanceSecurityGroup resource that has the status of **MODIFIED**.
 ![image](https://github.com/user-attachments/assets/5a4b6abb-a781-461e-b175-e44a0941925c)
+
 
 - Select **View drift details** to check more about what resources that changed.
 ![image](https://github.com/user-attachments/assets/92a54c61-a5b5-4246-b0b9-973dcfd6980a)
@@ -609,6 +612,7 @@ Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFo
 - Under the SecurityGroupIngress property value, note the CidrIP listed as 1.1.1.1/32
 - In order to make the webpage accessible, change the CidrIP value to 0.0.0.0/0
 ![image](https://github.com/user-attachments/assets/d8617233-f189-4d48-9bc8-aad14e05107c)
+
 
 - Save the file.
 
