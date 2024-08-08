@@ -538,6 +538,7 @@ In this step, we modify the security group rules in the EC2 console.
 - On the Inbound rules tab choose Edit inbound rules .
 - On the Edit inbound rules page, on the listed Security group rule ID modify the Source type parameter by selecting Anywhere-IPv4 from the drop-down menu.
 ![image](https://github.com/user-attachments/assets/48f6cecf-1abc-4069-82df-be77fcbf8ba6)
+
 - Choose Save rules .
 
 
@@ -563,9 +564,13 @@ In this step, we identify and detect the drift in the template via the AWS Manag
 ![image](https://github.com/user-attachments/assets/1067f783-3c99-42dd-98a5-59828ee8a6f4)
 
 - With stack selected, from the Stack actions drop-down menu, select **View drift results**.
+![image](https://github.com/user-attachments/assets/d8e77eac-dc10-4cf8-96c7-e948a1428fe5)
 
 - In the Resource drift status section, select the InstanceSecurityGroup resource that has the status of **MODIFIED**.
-- Select **View drift details** to learn more about what resources that changed.
+![image](https://github.com/user-attachments/assets/5a4b6abb-a781-461e-b175-e44a0941925c)
+
+- Select **View drift details** to check more about what resources that changed.
+![image](https://github.com/user-attachments/assets/92a54c61-a5b5-4246-b0b9-973dcfd6980a)
 
 Drift detection allows us to detect whether a stack’s actual configuration differs from its expected configuration. A resource is considered to have drifted if any of its actual property values differ from the expected property values. This includes if the property or resource has been deleted. In this lab we manually changed a resource value. The most direct manner to address this drift is to manually modify the resource back to the expected value. If the change is due to the deployment of another stack, rollback the changes of the other stack. A last resort and the most destructive is to delete stack and redeploy it.
 
