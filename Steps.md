@@ -606,7 +606,7 @@ Earlier in step 3, the InstanceSecurityGroup was modified outside of the CloudFo
 
 - In the AWS Cloud9 Environment pane, open the context menu for lab1.yaml file you edited earlier and choose Duplicate.
 - Rename the duplicate file lab1-CS.yaml, and open the file in the AWS Cloud9 editor.
-<img align="left" width="100" height="100" src="![image](https://github.com/user-attachments/assets/56d1f645-04e6-4a71-a5f1-3ff121e9328c)">
+<img align="left" src="![image](https://github.com/user-attachments/assets/56d1f645-04e6-4a71-a5f1-3ff121e9328c)">
 
 
   Modify the InstanceSecurityGroup resource to allow access to the AppURL:
