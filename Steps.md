@@ -587,9 +587,11 @@ In this step, we identify and detect the drift in the template via the Cloud9 CL
 ```
 aws cloudformation describe-stack-resource-drifts --stack-name Lab1 --stack-resource-drift-status-filters MODIFIED DELETED
 ```
+![image](https://github.com/user-attachments/assets/e65ef56e-ed0d-4804-9567-01b296acef6f)
 
 - In the results, look for the Resource Type SecurityGroup and then look for the PropertyDifferences. The results should mirror the drift information that was displayed on the AWS CloudFormation dashboard.
 - We have successfully detected a drift in the CloudFormation template.
+![image](https://github.com/user-attachments/assets/a65b5597-ffa0-437c-be6d-8b3343946947)
 
 
 ## Step 5: Update the stack using a change set
